@@ -1,0 +1,59 @@
+#: import from_hex kivy.utils.get_color_from_hex
+
+
+<CameraCV>:
+
+
+<InScreen>:
+
+	MDBoxLayout:
+		canvas.before:
+			Color:
+				rgba: from_hex('#242B2F')
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		id: cam_lay
+		orientation: 'vertical'
+		opacity: 0
+		spacing: '20dp'
+		
+		MDTopAppBar:
+			title: 'XCV'
+			left_action_items: [['menu', lambda x: x]]
+
+		
+					
+		MDBoxLayout:
+			id: camera_lay
+			
+			
+		
+		MDFloatLayout:
+			size_hint_y: None
+			height: dp(90)
+			padding: dp(25)
+			spacing: dp(20)
+			
+			MDFloatingActionButton:
+				icon: 'camera-flip'
+				user_font_size: '36dp'
+				size_hint_y: None
+				pos_hint: {'center_x': .3, 'center_y': .36}
+				#on_release:
+					#root.cvCam.take_pic()
+			MDFloatingActionButton:
+				icon: 'camera'
+				user_font_size: '36dp'
+				size_hint_y: None
+				pos_hint: {'center_x': .5, 'center_y': .5}
+				on_release:
+					root.cvCam.take_pic()
+					
+			MDFloatingActionButton:
+				icon: 'camera-burst'
+				user_icon_size: sp(22)
+				size_hint_y: None
+				pos_hint: {'center_x': .7, 'center_y': .36}
+				on_release:
+					root.cvCam.isCanny = True
